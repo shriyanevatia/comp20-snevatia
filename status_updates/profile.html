@@ -6,22 +6,51 @@
 <script type="text/javascript">
 	function myFunction()
 	{
-	var x = document.getElementById().value;
+		txt = document.getElementById("msg").value;
+		localStorage[new Date().getTime()] = txt;
+		reload();
 	}
-	var d = new Date();
-    var curr_date = d.getDate();
-    var curr_month = d.getMonth() + 1; //Months are zero based
-    var curr_year = d.getFullYear();
-    var curr_hours = d.getHours();
-    var curr_mins = d.getMinutes();
-    document.write(curr_date + "/" + curr_month + "/" + curr_year) + " " + curr_hours + ":" + curr_mins + " - " + msg ;
-	// messages displayed dynamicaly in "Updates" with the latest update first
-	// Format MM/DD/YYYY HH:MM - message
-	// 24 hour format time (don't need 09 can do 9)
+	
+	function reload()
+	{
+		var d = new Date();
+  
+    	var today = d.getDate();
+    	if (today < 10) {
+    		var curr_date = ("0" + today).slice(-2);	
+    	} else {
+    		var curr_date = today;
+    	}
+
+    	var mnth = d.getMonth() + 1;
+    	if (mnth < 10) {
+    		var curr_month = ("0" + mnth).slice(-2);	
+    	} else {
+    		curr_month = mnth;
+    	}
+ 
+    	var curr_year = d.getFullYear();
+    	var curr_hours = d.getHours(); 
+
+    	var mins = d.getMinutes();
+    	if (mins < 10) {
+    		var curr_mins = ("0" + mins).slice(-2);	
+    	} else {
+    		curr_mins = mins;
+    	}
+		
+
+		elem = document.getElementById("myList");
+		output = "";
+		for (key in localStorage) {
+			output = output + "<li>" + curr_date + "/" + curr_month + "/" + curr_year + " " + curr_hours + ":" + curr_mins + " - " +localStorage[key] + "</li>\n";
+		}
+		elem.innerHTML = output;
+	}
 </script>
 </head>
 
-<body>
+<body onload="myFunction()">
 	<h1>Fecebook</h1>
 	<div id="nav">
 		<ul>
@@ -34,18 +63,18 @@
 		</ul>
 	</div>
 	<h2 id="fullname">Barney Gumble</h2>
-	<form action="" method="get">
-		<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="myFunction()"/><input type="submit" style="display:none"/></h3>
-	</form>
-	<h3>Updates</h3>
-	<form action="" method="post">
+	<form method="get">
+		<h3>What are you thinking about? 
+			<input type="text" id="msg" name="msg" size="30" onchange="myFunction()"/>
 
+			<input type="submit" style="display:none"/>
+		</h3>
 	</form>
 	<div id="status">
-		<h3>Recent updates</h3>
-		<ul>
-			<li><!-- put the JS ones here --></li>
-		</ul>	
+		<h3>Updates</h3>
+		<ul id="myList">
+		</ul>
+	</form>
 	</div>
 	<div id="yesterday">
 		<h3>Updates from yesterday:</h3>
