@@ -6,13 +6,6 @@
 <script type="text/javascript">
 	function myFunction()
 	{
-		txt = document.getElementById("msg").value;
-		localStorage[new Date().getTime()] = txt;
-		reload();
-	}
-	
-	function reload()
-	{
 		var d = new Date();
   
     	var today = d.getDate();
@@ -38,12 +31,18 @@
     	} else {
     		curr_mins = mins;
     	}
-		
 
+		txt = ( curr_date + "/" + curr_month + "/" + curr_year + " " + curr_hours + ":" + curr_mins + " - " + document.getElementById("msg").value );
+		localStorage[new Date().getTime()] = txt;
+		reload();
+	}
+	
+	function reload()
+	{	
 		elem = document.getElementById("myList");
 		output = "";
 		for (key in localStorage) {
-			output = output + "<li>" + curr_date + "/" + curr_month + "/" + curr_year + " " + curr_hours + ":" + curr_mins + " - " +localStorage[key] + "</li>\n";
+			output = output + "<li>" + localStorage[key] + "</li>\n";
 		}
 		elem.innerHTML = output;
 	}
