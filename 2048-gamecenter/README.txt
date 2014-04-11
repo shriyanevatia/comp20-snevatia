@@ -15,7 +15,7 @@ Assignment 4
 	- Game Manager displays with title and headings
 
    Incorrectly Implemented: 
-   	- MongoDB not populated with data (therefore cannot get data for JSON)
+   	- Cannot play 2048 game to populate Gamecenter with data
 
 2. Worked with : Sharada Sant, Krishna Soni, Emma Posamentier
 
