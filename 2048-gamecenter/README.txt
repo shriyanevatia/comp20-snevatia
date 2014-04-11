@@ -12,9 +12,9 @@ Assignment 4
 	- Included node_modules in folder
 	- Connected MongoDB database to app.js file in node/express app
 	- this README
+	- Game Manager displays with title and headings
 
    Incorrectly Implemented: 
-   	- Game Manager not displaying
    	- MongoDB not populated with data (therefore cannot get data for JSON)
 
 2. Worked with : Sharada Sant, Krishna Soni, Emma Posamentier
