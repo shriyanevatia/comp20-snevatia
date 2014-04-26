@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shriya's Security Report</title>
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
+</head>
+<body>
+<h1>Security Assessment of 2048 Gamecenter</h1>
+
+<p>By <a href="http://shriyanevatia.github.io/">Shriya Nevatia</a> &bull; 4/24/2014</p>
+
+<h2>Introduction</h2>
+
+<p>This assessment tests the security of the <a href="http://glacial-taiga-9129.herokuapp.com/">2048 Gamecenter</a> web application developed by Dan Kim for <a href="http://tuftsdev.github.io/WebProgramming/assignments/a5.html">Comp20 assignment 5</a>. 
+</p>
+
+<p>
+// explain what it does - description of product
+// explain what this doc is for
+// explain what security vulnerabilities are
+// explain code vulnerabilities and what kinds this document covers
+</p>
+
+<h2>Methodology</h2>
+
+<p>
+// how i found the vulnerabilities
+// include tools used
+// use <code> code tags </code>
+</p>
+
+<h2>Abstract of Findings</h2>
+
+<p>
+// overview of all security issues identified
+// non-technical language
+</p>
+
+<h2>Issues Found</h2>
+
+<ol>
+	<li> <h3>No Input Validation</h3>
+		<ul>
+			<li> User can insert scripts  </li>
+			<li> Location / Page where issue was found </li>
+			<li> Severity of issue (low/medium/high) plus justification </li>
+			<li> Description of issue; how did you find it? Screenshot is great </li>
+			<li> Proof of vulnerability; screenshots ideal </li>
+			<li> Resolution: </li>
+		</ul>
+	</li>
+	<li> <h3> Mongo Database Unprotected </h3>
+		<ul>
+			<li> Users who did not create Mongo Database can insert, remove, or modify data if they run Mongo in the application repository </li>
+			<li> Location / Page where issue was found </li>
+			<li> Severity of issue (low/medium/high) plus justification </li>
+			<li> Description of issue; how did you find it? Screenshot is great </li>
+			<li> Proof of vulnerability; screenshots ideal </li>
+			<li> Resolution: Require Authentication for access to Mongo database </li>
+		</ul>
+	</li>
+	<li> <h3> CORS Universal Allow </h3>
+		<ul>
+			<li> Issue </li>
+			<li> Location / Page where issue was found </li>
+			<li> Severity of issue (low/medium/high) plus justification </li>
+			<li> Description of issue; how did you find it? Screenshot is great </li>
+			<li> Proof of vulnerability; screenshots ideal </li>
+			<li> Resolution: Validate response 
+•  Add some form of authentication / credentials checking via 
+withCredentials property on XMLHttpRequest (e.g., 
+cookie)  </li>
+		</ul>
+	</li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>
+// future considerations and recommendations with costs
+</p>
+
+</body>
+</html>
