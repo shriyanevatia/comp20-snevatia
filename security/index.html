@@ -71,9 +71,7 @@
 			<li> Severity: high; This allows corrupted data to be sent to the user's computer and lets HTTP requests happen without validation. This could have severe negative impacts on the client's computer </li>
 			<li> Description: I found this issue by looking at the actual code provided by my classmate and analyzing the Javascript to find a vulnerability that did not require a username or password for validation. </li>
 			<li> Proof of vulnerability: <img src="UniversalAllow.png"> </li>
-			<li> Resolution: Validate response and Add some form of authentication / credentials checking via 
-withCredentials property on XMLHttpRequest (e.g., 
-cookie)  </li>
+			<li> Resolution: I recommend that the creator should write more javascript code to validate the server response and add authentication for the XMLHttpRequest. </li>
 		</ul>
 	</li>
 </ol>
@@ -82,7 +80,6 @@ cookie)  </li>
 
 <p>
 	Overall, this app was built according to the specifications for the assignment but is not at an appropriate level of security to be released for public use. If the 2048 game itself could be "messed with" this easily, someone would have broken it quite quickly (considering how insanely popular it was). In the future, an app like this would be useful for users who wanted to keep track of personal or global high scores, so long as the users had a limited type of information they could input, and the database was protected and secure.
-// future considerations and recommendations with costs
 </p>
 
 </body>
