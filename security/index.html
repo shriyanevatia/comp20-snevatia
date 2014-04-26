@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Shriya's Security Report</title>
-    <link rel="stylesheet" type="text/css" href="style.css"></link>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
 <h1>Security Assessment of 2048 Gamecenter</h1>
@@ -34,12 +34,12 @@
 
 <p>
 	The following is an overview of the three security vulnerabilities I found:
+</p>
 	<ol>
 		<li> Users could input anything in the field for their username; to demonstrate this, I embedded a YouTube video in the place of a text username. This is an issue because a user could theoretically input any kind of script to make the app work incorrectly. </li>
 		<li> The database in unprotected, which means the storage system for all the users' data can be modified by users who do not have any validation or credentials of the creator. </li>
 		<li> The page has a CORS Universal Allow, which means that a request can be made from anywhere to this page. Users should only get data from and send data to secure and validated servers. </li>
 	</ol>
-</p>
 
 <h2>Issues Found</h2>
 
@@ -50,7 +50,7 @@
 			<li> Location: In 2048 game, prompt field that appears at end of game </li>
 			<li> Severity: low; They cannot do much to ruin the functionality of the app itself. </li>
 			<li> Description: The user can input a video, image, javascript function, or other non-standard type of input in the text field. </li>
-			<li> Proof of vulnerability: <img src="NoInputValidation.png"> </li>
+			<li> Proof of vulnerability: <img src="NoInputValidation.png" alt="no input validation"> </li>
 			<li> Resolution: I recommend adding a function that ensures that the user can only enter a certain number of characters (some reasonable amount for a username, perhaps 30) and can only enter lowercase letters, uppercase letters, or numerals. Therefore they cannot use any of the punctuation necessary to write HTML or Javascript code. </li>
 		</ul>
 	</li>
@@ -60,7 +60,7 @@
 			<li> Location: Mongo server running on another computer </li>
 			<li> Severity: medium; The user can falsify data and basically ruin the functionality of the app to render it useless. They cannot really mess with the creator's computer or data, though. </li>
 			<li> Description: The user must run mongo and look at data stored in the database for this application, and they can lookup, add, remove, or modify the existing data in the specified collection. </li>
-			<li> Proof of vulnerability: <img src="Database.png"> </li>
+			<li> Proof of vulnerability: <img src="Database.png" alt="mongo database"> </li>
 			<li> Resolution: I would recommend that the creator requires authentication for access to their Mongo database in the form of a username and password so that other users cannot access this data. </li>
 		</ul>
 	</li>
@@ -70,7 +70,7 @@
 			<li> Location: In the javascript code for the web application; namely the file "highscore.js"</li>
 			<li> Severity: high; This allows corrupted data to be sent to the user's computer and lets HTTP requests happen without validation. This could have severe negative impacts on the client's computer </li>
 			<li> Description: I found this issue by looking at the actual code provided by my classmate and analyzing the Javascript to find a vulnerability that did not require a username or password for validation. </li>
-			<li> Proof of vulnerability: <img src="UniversalAllow.png"> </li>
+			<li> Proof of vulnerability: <img src="UniversalAllow.png" alt="universal allow code"> </li>
 			<li> Resolution: I recommend that the creator should write more javascript code to validate the server response and add authentication for the XMLHttpRequest. </li>
 		</ul>
 	</li>
