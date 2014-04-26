@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shriya's Security Report</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<h1>Security Assessment of 2048 Gamecenter</h1>
+
+<p>By <a href="http://shriyanevatia.github.io/">Shriya Nevatia</a> &bull; 4/24/2014</p>
+
+<h2>Introduction</h2>
+
+<p>This assessment tests the security of the <a href="http://glacial-taiga-9129.herokuapp.com/">2048 Gamecenter</a> web application developed by Dan Kim for <a href="http://tuftsdev.github.io/WebProgramming/assignments/a5.html">Comp20 assignment 5</a>. 
+</p>
+
+<p>
+	The 2048 Gamecenter is a web application hosted on Heroku that uses Node.js, Express, and MongoDB. It allows players of <a href="http://gabrielecirulli.github.io/2048/">the game 2048</a> to save their high scores and view the high scores of other players, saved by particular usernames and with associated timestamps. The gamecenter app must be connected to a modified version of 2048 which sends user data to the app.
+</p>
+<p>
+	This document is a security analysis of the 2048 Gamecenter for my peer in Comp 20 (Web Programming at Tufts University). We learned about various common security issues in class, and in this document I explore some vulnerabilities that I found in this student's Gamecenter app. 
+</p>
+
+<h2>Methodology</h2>
+
+<p>
+	Security vulnerabilities, put simply, are issues that allow unauthorized viewers to exploit or otherwise tamper with an app or website to break it, invalidate it, or otherwise compromise it. Issues at different levels of depth can allow a user to break the app in different ways (for example, changing the background color of a page is clearly not as severe as breaking the functionality of a government website and redirecting it to a Rick Roll youtube video).
+</p>
+<p>
+	I found the following vulnerabilities by attempting to break the app at different levels; first I modified input to the app in a client-facing field (this is something any user could do). Second, I looked at the database from my classmate, and third, I looked at the given code from my classmate. The last two could not have been done easily by someone who did not have access to the app's original program files.
+</p>
+
+<h2>Abstract of Findings</h2>
+
+<p>
+	The following is an overview of the three security vulnerabilities I found:
+</p>
+	<ol>
+		<li> Users could input anything in the field for their username; to demonstrate this, I embedded a YouTube video in the place of a text username. This is an issue because a user could theoretically input any kind of script to make the app work incorrectly. </li>
+		<li> The database in unprotected, which means the storage system for all the users' data can be modified by users who do not have any validation or credentials of the creator. </li>
+		<li> The page has a CORS Universal Allow, which means that a request can be made from anywhere to this page. Users should only get data from and send data to secure and validated servers. </li>
+	</ol>
+
+<h2>Issues Found</h2>
+
+<ol>
+	<li> <h3>No Input Validation</h3>
+		<ul>
+			<li> Issue: User can insert scripts in the "username" field </li>
+			<li> Location: In 2048 game, prompt field that appears at end of game </li>
+			<li> Severity: low; They cannot do much to ruin the functionality of the app itself. </li>
+			<li> Description: The user can input a video, image, javascript function, or other non-standard type of input in the text field. </li>
+			<li> Proof of vulnerability: <img src="NoInputValidation.png" alt="no input validation"> </li>
+			<li> Resolution: I recommend adding a function that ensures that the user can only enter a certain number of characters (some reasonable amount for a username, perhaps 30) and can only enter lowercase letters, uppercase letters, or numerals. Therefore they cannot use any of the punctuation necessary to write HTML or Javascript code. </li>
+		</ul>
+	</li>
+	<li> <h3> Mongo Database Unprotected </h3>
+		<ul>
+			<li> Issue: Users who did not create Mongo Database can insert, remove, or modify data if they run Mongo in the application repository. </li>
+			<li> Location: Mongo server running on another computer </li>
+			<li> Severity: medium; The user can falsify data and basically ruin the functionality of the app to render it useless. They cannot really mess with the creator's computer or data, though. </li>
+			<li> Description: The user must run mongo and look at data stored in the database for this application, and they can lookup, add, remove, or modify the existing data in the specified collection. </li>
+			<li> Proof of vulnerability: <img src="Database.png" alt="mongo database"> </li>
+			<li> Resolution: I would recommend that the creator requires authentication for access to their Mongo database in the form of a username and password so that other users cannot access this data. </li>
+		</ul>
+	</li>
+	<li> <h3> CORS Universal Allow </h3>
+		<ul>
+			<li> Issue: CORS Universal Allow ("*") lets any server render this page on a user's web browser</li>
+			<li> Location: In the javascript code for the web application; namely the file "highscore.js"</li>
+			<li> Severity: high; This allows corrupted data to be sent to the user's computer and lets HTTP requests happen without validation. This could have severe negative impacts on the client's computer </li>
+			<li> Description: I found this issue by looking at the actual code provided by my classmate and analyzing the Javascript to find a vulnerability that did not require a username or password for validation. </li>
+			<li> Proof of vulnerability: <img src="UniversalAllow.png" alt="universal allow code"> </li>
+			<li> Resolution: I recommend that the creator should write more javascript code to validate the server response and add authentication for the XMLHttpRequest. </li>
+		</ul>
+	</li>
+</ol>
+
+<h2>Conclusion</h2>
+
+<p>
+	Overall, this app was built according to the specifications for the assignment but is not at an appropriate level of security to be released for public use. If the 2048 game itself could be "messed with" this easily, someone would have broken it quite quickly (considering how insanely popular it was). In the future, an app like this would be useful for users who wanted to keep track of personal or global high scores, so long as the users had a limited type of information they could input, and the database was protected and secure.
+</p>
+
+</body>
+</html>
