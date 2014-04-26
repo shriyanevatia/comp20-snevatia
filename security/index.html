@@ -35,9 +35,9 @@
 <p>
 	The following is an overview of the three security vulnerabilities I found:
 	<ol>
-		<li> </li>
-		<li> </li>
-		<li> </li>
+		<li> Users could input anything in the field for their username; to demonstrate this, I embedded a YouTube video in the place of a text username. This is an issue because a user could theoretically input any kind of script to make the app work incorrectly. </li>
+		<li> The database in unprotected, which means the storage system for all the users' data can be modified by users who do not have any validation or credentials of the creator. </li>
+		<li> The page has a CORS Universal Allow, which means that a request can be made from anywhere to this page. Users should only get data from and send data to secure and validated servers. </li>
 	</ol>
 </p>
 
@@ -46,8 +46,8 @@
 <ol>
 	<li> <h3>No Input Validation</h3>
 		<ul>
-			<li> Issue: User can insert scripts  </li>
-			<li> Location:  </li>
+			<li> Issue: User can insert scripts in the "username" field </li>
+			<li> Location: In 2048 game, prompt that appears at end of game </li>
 			<li> Severity: of issue (low/medium/high) plus justification </li>
 			<li> Description: of issue; how did you find it? Screenshot is great </li>
 			<li> Proof of vulnerability: <img src="NoInputValidation.png"> </li>
@@ -81,6 +81,7 @@ cookie)  </li>
 <h2>Conclusion</h2>
 
 <p>
+	Overall, this app was built according to the specifications for the assignment but is not at an appropriate level of security to be released for public use. If the 2048 game itself could be "messed with" this easily, someone would have broken it quite quickly (considering how insanely popular it was). In the future, an app like this would be useful for users who wanted to keep track of personal or global high scores, so long as the users had a limited type of information they could input, and the database was protected and secure.
 // future considerations and recommendations with costs
 </p>
 
