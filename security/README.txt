@@ -9,7 +9,7 @@ Correctly Implemented:
 - Conclusion
 
 Incorrectly Implemented:
-- Nothing to my knowledge
+- Could not push to gh-pages
 
 Collaborated with / Discussed with: Hayley Weiss, Dan Kim, Sharada Sant, Krishna Soni
 
