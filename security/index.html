@@ -15,25 +15,30 @@
 </p>
 
 <p>
-// explain what it does - description of product
-// explain what this doc is for
-// explain what security vulnerabilities are
-// explain code vulnerabilities and what kinds this document covers
+	The 2048 Gamecenter is a web application hosted on Heroku that uses Node.js, Express, and MongoDB. It allows players of <a href="http://gabrielecirulli.github.io/2048/">the game 2048</a> to save their high scores and view the high scores of other players, saved by particular usernames and with associated timestamps. The gamecenter app must be connected to a modified version of 2048 which sends user data to the app.
+</p>
+<p>
+	This document is a security analysis of the 2048 Gamecenter for my peer in Comp 20 (Web Programming at Tufts University). We learned about various common security issues in class, and in this document I explore some vulnerabilities that I found in this student's Gamecenter app. 
 </p>
 
 <h2>Methodology</h2>
 
 <p>
-// how i found the vulnerabilities
-// include tools used
-// use <code> code tags </code>
+	Security vulnerabilities, put simply, are issues that allow unauthorized viewers to exploit or otherwise tamper with an app or website to break it, invalidate it, or otherwise compromise it. Issues at different levels of depth can allow a user to break the app in different ways (for example, changing the background color of a page is clearly not as severe as breaking the functionality of a government website and redirecting it to a Rick Roll youtube video).
+</p>
+<p>
+	I found the following vulnerabilities by attempting to break the app at different levels; first I modified input to the app in a client-facing field (this is something any user could do). Second, I looked at the database from my classmate, and third, I looked at the given code from my classmate. The last two could not have been done easily by someone who did not have access to the app's original program files.
 </p>
 
 <h2>Abstract of Findings</h2>
 
 <p>
-// overview of all security issues identified
-// non-technical language
+	The following is an overview of the three security vulnerabilities I found:
+	<ol>
+		<li> </li>
+		<li> </li>
+		<li> </li>
+	</ol>
 </p>
 
 <h2>Issues Found</h2>
@@ -41,33 +46,32 @@
 <ol>
 	<li> <h3>No Input Validation</h3>
 		<ul>
-			<li> User can insert scripts  </li>
-			<li> Location / Page where issue was found </li>
-			<li> Severity of issue (low/medium/high) plus justification </li>
-			<li> Description of issue; how did you find it? Screenshot is great </li>
-			<li> Proof of vulnerability; screenshots ideal </li>
+			<li> Issue: User can insert scripts  </li>
+			<li> Location:  </li>
+			<li> Severity: of issue (low/medium/high) plus justification </li>
+			<li> Description: of issue; how did you find it? Screenshot is great </li>
+			<li> Proof of vulnerability: <img src="NoInputValidation.png"> </li>
 			<li> Resolution: </li>
 		</ul>
 	</li>
 	<li> <h3> Mongo Database Unprotected </h3>
 		<ul>
-			<li> Description: Users who did not create Mongo Database can insert, remove, or modify data if they run Mongo in the application repository </li>
-			<li> Location / Page where issue was found: </li>
-			<li> Severity of issue (low/medium/high) plus justification </li>
-			<li> Description of issue; how did you find it? Screenshot is great </li>
-			<li> Proof of vulnerability; screenshots ideal </li>
+			<li> Issue: Users who did not create Mongo Database can insert, remove, or modify data if they run Mongo in the application repository </li>
+			<li> Location: </li>
+			<li> Severity: of issue (low/medium/high) plus justification </li>
+			<li> Description: how did you find it? Screenshot is great </li>
+			<li> Proof of vulnerability: <img src="Database.png"> </li>
 			<li> Resolution: Require Authentication for access to Mongo database </li>
 		</ul>
 	</li>
 	<li> <h3> CORS Universal Allow </h3>
 		<ul>
-			<li> Issue </li>
-			<li> Location / Page where issue was found </li>
-			<li> Severity of issue (low/medium/high) plus justification </li>
-			<li> Description of issue; how did you find it? Screenshot is great </li>
-			<li> Proof of vulnerability; screenshots ideal </li>
-			<li> Resolution: Validate response 
-•  Add some form of authentication / credentials checking via 
+			<li> Issue: </li>
+			<li> Location: / Page where issue was found </li>
+			<li> Severity: of issue (low/medium/high) plus justification </li>
+			<li> Description: of issue; how did you find it? Screenshot is great </li>
+			<li> Proof of vulnerability: <img src="UniversalAllow.png"> </li>
+			<li> Resolution: Validate response and Add some form of authentication / credentials checking via 
 withCredentials property on XMLHttpRequest (e.g., 
 cookie)  </li>
 		</ul>
